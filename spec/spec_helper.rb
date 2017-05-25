@@ -1,9 +1,6 @@
-#
-# Author:: Seth Chisamore (<schisamo@chef.io>)
-# Cookbook Name:: chef_handler
-# Attributes:: default
-#
-# Copyright 2011-2016, Chef Software, Inc
+# Author:: Kartik Cating-Subramanian (<ksubramanian@chef.io>)
+# Copyright:: Copyright (c) 2015-2016 Chef Software, Inc.
+# License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +13,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-default['chef_handler']['handler_path'] = "#{File.expand_path(File.join(Chef::Config[:file_cache_path], '..'))}/handlers"
+require 'chefspec'
+require 'chefspec/berkshelf'
+require_relative '../libraries/helpers'
+
+RSpec.configure do |config|
+  config.color = true               # Use color in STDOUT
+  config.formatter = :documentation # Use the specified formatter
+  config.log_level = :error         # Avoid deprecation notice SPAM
+end
